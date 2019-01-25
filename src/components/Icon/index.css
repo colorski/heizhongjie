@@ -1,0 +1,23 @@
+.iconfont .icon{
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.25em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.clickalbe {
+  cursor: pointer;
+}
+.icon-loading .icon {
+  animation: spin 2s infinite;
+  animation-timing-function: cubic-bezier(0.46, 0.07, 0.38, 0.88);
+}
+    
+@keyframes spin {
+  from{
+    transform: rotate(60deg);
+  }
+  to{
+    transform: rotate(420deg);
+  }
+}
