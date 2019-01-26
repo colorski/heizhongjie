@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 //import axios from 'axios'
 import topicList from '../../data/homeList'
-import Toast from '../Toast'
 import Icon from '../Icon'
 import List from './List'
 
@@ -26,7 +25,6 @@ class Home extends PureComponent {
             <input type="text" className="ipt_search" placeholder="中介名关键字" value={this.state.searchVal} onChange={this.searchIptHandleChange} />
             <Icon type="search" className="btn_search" onClick={this.searchBtnHandleClick} />
           </div>
-          <span onClick={()=>{ Toast.loading('普通提示普通提示普通提示普通提示') }}>点我</span>
           <div className="rt_entr">
             <Link to="/roast">吐槽</Link>
             <Link to="/vote">投票</Link>

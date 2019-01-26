@@ -2,7 +2,7 @@
  * 字体图标组件
  * 字体来源于http://iconfont.cn/
  * 所有字体可在iconfont.cn自己定制，下载字体包后，把iconfont.js文件拷贝到该目录，覆盖原来的文件
- * 此示例图标来自自己的github帐号登录 - 我参与的项目 - oldlike
+ * 此示例图标来自自己的github帐号登录 - 我发起的项目 - 反黑联盟
  */
 
 import React from 'react'

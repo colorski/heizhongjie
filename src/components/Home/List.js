@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 class List extends PureComponent {
   render(){
     const { topicList } = this.props;
-    console.log(topicList)
     return (
       <div className="rt_listem">
         {

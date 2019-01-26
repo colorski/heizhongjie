@@ -6,6 +6,7 @@ import Icon from '../Icon'
 import CommentList from './CommentList'
 import topicList from '../../data/homeList'
 import detailData from '../../data/detail'
+import Toast from '../Toast'
 
 class Detail extends PureComponent {
   constructor(props){
@@ -38,8 +39,7 @@ class Detail extends PureComponent {
             <b className={praised?'transhow':''}>1</b>
           </span>
           <span className={commentShow?'active':''} onClick={commentShow?this.handleCommentShowCancle:this.handleCommentShowBtnClick}><Icon type="comment_light" />评论</span>
-          <span><Icon type="share" />分享</span>
-          <span><Icon type="notice" />举报</span>
+          <span onClick={()=>Toast.warning('此功能暂未开发！')}><Icon type="share" />分享</span>
 
           <span className="author">{author} {time}</span>
         </div>
@@ -100,7 +100,12 @@ class Detail extends PureComponent {
 
   //点赞相关
   handlePraiseClick(){
-    const { praised, praiseAccount } = this.props
+    const { praised, praiseAccount, logined } = this.props
+
+    if(!logined){
+      Toast.warning('请先登录！')
+      return
+    }
 
     const action = {
       type: 'CHANGE_PRAISED',
@@ -117,6 +122,12 @@ class Detail extends PureComponent {
 
   //进行评论相关
   handleCommentShowBtnClick(){
+    const { logined } = this.props;
+
+    if(!logined){
+      Toast.warning('请先登录！')
+      return
+    }
     this.setState({
       commentShow: true
     })
@@ -135,7 +146,7 @@ class Detail extends PureComponent {
   handleSubmitCommentArea(){
     const {commentTextArea} = this.state
     if(commentTextArea.replace(/^\s+$/g,'')===''){
-      alert('不能为空！');
+      Toast.warning('请填写评论内容！', 1500);
       return
     }
     const action = {
@@ -149,6 +160,7 @@ class Detail extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
+    logined: state.getIn(['user', 'logined']),
     title: state.getIn(['detail', 'data', 'title']),
     content: state.getIn(['detail', 'data', 'content']),
     author: state.getIn(['detail', 'data', 'author']),

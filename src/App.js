@@ -15,6 +15,7 @@ import Detail from './components/Detail'
 import Roast from './components/Roast'
 import Vote from './components/Vote'
 import NoMatch from './components/NoMatch'
+import Test from './components/Test'
 
 class App extends PureComponent {
   render() {
@@ -34,6 +35,7 @@ class App extends PureComponent {
                 <Route path="/detail/:id/:title" component={ Detail }></Route>
                 <Route path="/roast" component={ Roast }></Route>
                 <Route path="/vote" component={ Vote }></Route>
+                <Route path="/test" component={ Test } />
                 <Route path="/noMatch" component={ NoMatch } />
                 
                 <Redirect to="/noMatch" />
