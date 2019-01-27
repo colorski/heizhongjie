@@ -6,7 +6,9 @@ import Icon from '../Icon'
 import CommentList from './CommentList'
 import topicList from '../../data/homeList'
 import detailData from '../../data/detail'
+import Modal from '../Modal'
 import Toast from '../Toast'
+import Report from '../Report'
 
 class Detail extends PureComponent {
   constructor(props){
@@ -21,11 +23,14 @@ class Detail extends PureComponent {
     this.handleCommentAreaChange = this.handleCommentAreaChange.bind(this)
     this.handleSubmitCommentArea = this.handleSubmitCommentArea.bind(this)
     this.handlePraiseClick = this.handlePraiseClick.bind(this)
+    this.handleReportTypeId = this.handleReportTypeId.bind(this)
+    this.handleReportId = this.handleReportId.bind(this)
   }
 
   render (){
-    const { title, content, praiseAccount, author, time, praised } = this.props;
+    const { title, content, praiseAccount, author, time, praised} = this.props;
     const { commentShow } = this.state;
+    const { confirm } = Modal;
 
     return (
       <div className="detail_wrap">
@@ -40,6 +45,21 @@ class Detail extends PureComponent {
           </span>
           <span className={commentShow?'active':''} onClick={commentShow?this.handleCommentShowCancle:this.handleCommentShowBtnClick}><Icon type="comment_light" />评论</span>
           <span onClick={()=>Toast.warning('此功能暂未开发！')}><Icon type="share" />分享</span>
+          <span onClick={()=>
+            confirm({
+              content: <Report onGetChosedReportId={(id)=>this.handleReportId(id)} />,
+              title: true,
+              onOk: ()=>{
+                const { logined, chosedReportId } = this.props;
+
+                if(!logined){
+                  Toast.warning('请先登录！')
+                  return
+                }
+                Toast.info('举报 type: article, id：'+chosedReportId, 3000)
+              }
+            })}
+          ><Icon type="notice" />举报</span>
 
           <span className="author">{author} {time}</span>
         </div>
@@ -75,6 +95,7 @@ class Detail extends PureComponent {
     this.onGetDetailData(_detail)
     this.onGetCommentsData(_comments)
     this.onGetPraiseAccount(_praiseAccount)
+    this.handleReportTypeId(articleId)
   }
   onGetDetailData(d){
     const action = {
@@ -156,6 +177,22 @@ class Detail extends PureComponent {
     this.props.submitCommentTextArea(action)
   }
 
+  //举报相关
+  handleReportTypeId(id){
+    const action = {
+      type: 'report/REPORT_TYPE_ID',
+      reportTypeId: id
+    }
+    this.props.handleReportTypeIdToStore(action)
+  }
+  handleReportId(id){
+    const action = {
+      type: 'report/CHOSED_REPORT_ID',
+      chosedReportId: id
+    }
+    this.props.handleReportIdToStore(action)
+  }
+
 }
 
 const mapStateToProps = (state) => {
@@ -166,8 +203,10 @@ const mapStateToProps = (state) => {
     author: state.getIn(['detail', 'data', 'author']),
     time: state.getIn(['detail', 'data', 'time']),
 
+    aticleId: state.getIn(['detail', 'data', 'id']),
     praised:  state.getIn(['detail', 'praised']),
     praiseAccount: state.getIn(['detail', 'praiseAccount']),
+    chosedReportId: state.getIn(['detail', 'chosedReportId']),
   }
 }
 
@@ -178,6 +217,8 @@ const mapDispatchToProps = (dispatch) => ({
   submitCommentTextArea(action) { dispatch(action) },
   changePraised(action) { dispatch(action) },
   changePraiseAccount(action) { dispatch(action) },
+  handleReportIdToStore(action) { dispatch(action) },
+  handleReportTypeIdToStore(action) { dispatch(action) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

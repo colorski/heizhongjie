@@ -5,7 +5,9 @@ const defaultState = fromJS({
   comments: [],
   commentTextArea: '',
   praised: false,
-  praiseAccount: 0
+  praiseAccount: 0,
+  reportTypeId: '',
+  chosedReportId: '',
 });
 
 export default (state = defaultState, action) => {
@@ -22,6 +24,10 @@ export default (state = defaultState, action) => {
       return state.set('praised', fromJS(action.praised))
     case 'CHANGE_PRAISE_ACCOUNT':
       return state.set('praiseAccount', fromJS(action.praiseAccount))
+    case 'report/REPORT_TYPE_ID':
+      return state.set('reportTypeId', fromJS(action.reportTypeId))
+    case 'report/CHOSED_REPORT_ID':
+      return state.set('chosedReportId', fromJS(action.chosedReportId))
       //如果有多个可以这样写：
       // state.merge({
       //   'topicList': fromJS(action.topicList),

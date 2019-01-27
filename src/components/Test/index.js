@@ -15,15 +15,15 @@ class Test extends Component {
           <span onClick={()=>confirm({
                 content: '确定要删除吗？',
                 onOk() { console.log('文件已删除！') },
-                onCancel() { console.log('用户已取消操作。') },
+                onCancel() { console.log('已取消操作。') },
                 //okText: '提交',
                 //cancleText: '不提交',
             })} style={{cursor: 'pointer', marginRight:'20px'}}>confirm
           </span>
           <span onClick={()=>prompt({
                 content: _alertContent,
-                onOk(data) { console.log(`已修改为：${data}`) },
-                onCancel() { console.log('用户已取消操作') }
+                onPromptOk(data) { console.log(`已修改为：${data}`) },
+                onCancel() { console.log('已取消操作') }
             })} style={{cursor: 'pointer', marginRight:'20px'}}>prompt</span>
         </div>
         <hr style={{margin: '20px 0'}} />
