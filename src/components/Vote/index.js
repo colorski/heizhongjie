@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-//import Icon from '../Icon'
 import Toast from '../Toast'
 import Modal from '../Modal'
 import agencies from '../../data/agencies'
