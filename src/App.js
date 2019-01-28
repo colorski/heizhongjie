@@ -14,6 +14,7 @@ import Desclaimer from './components/Desclaimer';
 import Detail from './components/Detail'
 import Roast from './components/Roast'
 import Vote from './components/Vote'
+import ToAdd from './components/ToAdd'
 import NoMatch from './components/NoMatch'
 import Test from './components/Test'
 
@@ -35,6 +36,7 @@ class App extends PureComponent {
                 <Route path="/detail/:id/:title" component={ Detail }></Route>
                 <Route path="/roast" component={ Roast }></Route>
                 <Route path="/vote" component={ Vote }></Route>
+                <Route path="/add" component={ ToAdd }></Route>
                 <Route path="/test" component={ Test } />
                 <Route path="/noMatch" component={ NoMatch } />
                 

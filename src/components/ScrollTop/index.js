@@ -8,7 +8,7 @@ class ScrollTop extends PureComponent {
     const { scrollShow } = this.props;
     return (
       <div className="go_top">
-        <Link to="/AddAgency"><p title="添加中介"><Icon type="jiahao" /></p></Link>
+        <Link to="/add"><p title="添加中介"><Icon type="jiahao" /></p></Link>
         { scrollShow ? <p id="goTop" title="返回顶部" onClick={this.handleScrollTop}><Icon type="pullup" /></p> : null }
       </div>
     )

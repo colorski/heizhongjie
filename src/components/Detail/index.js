@@ -175,6 +175,8 @@ class Detail extends PureComponent {
       commentTextArea: commentTextArea
     }
     this.props.submitCommentTextArea(action)
+
+    Toast.success('提交成功！')
   }
 
   //举报相关

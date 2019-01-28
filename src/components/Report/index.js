@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react'
-//import { connect } from 'react-redux'
-import './Report.css'
 import Icon from '../Icon'
 import reportItem from '../../data/report'
 
@@ -10,7 +8,6 @@ class Report extends PureComponent {
         this.state = {
             chosedId: '',
         }
-
     }
 
     render() {

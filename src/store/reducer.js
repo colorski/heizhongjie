@@ -5,13 +5,15 @@ import user from '../components/User/reducer'
 import home from '../components/Home/reducer'
 import city from '../components/TopNav/reducer'
 import detail from '../components/Detail/reducer'
+import vote from '../components/Vote/reducer'
 
 export default combineReducers({
   global,
   user,
   home,
   city,
-  detail
+  detail,
+  vote
 });
 
 
