@@ -90,7 +90,6 @@ class Vote extends Component {
     this.props.getAgenciesData(action)
   }
   handleSessionVotedStatus(){
-    console.log(sessionStorage.getItem('voted'))
     const action = {
       type: 'vote/VOTED_STATUS',
       voted: sessionStorage.getItem('voted')?true:false,
