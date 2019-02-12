@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css'
 import store from './store'
 import { Provider } from 'react-redux'
@@ -22,7 +22,7 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
           <React.Fragment>
             <Header />
             <div className="rt">
@@ -46,7 +46,7 @@ class App extends PureComponent {
             {/* <Icon type="appreciate_fill_light" title="click me!" onClick={()=>alert('good! thank u!')} /> */}
             
           </React.Fragment>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     );
   }
