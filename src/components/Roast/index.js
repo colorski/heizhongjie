@@ -9,7 +9,7 @@ class Roast extends PureComponent {
 
     this.state={
       title: '',
-      text: '<p>quill测试文本</p>',
+      text: '<p>填写吐槽内容...</p>',
     }
     this.editor=null;
     this.handleSubmitClick = this.handleSubmitClick.bind(this)
