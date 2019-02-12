@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Toast from '../Toast'
 import Modal from '../Modal'
 import agencies from '../../data/agencies'
+import Icon from '../Icon';
 
 const compareFn = (property) => (a,b)=> b[property]-a[property] //根据属性desc排序的方法
 const arr = [...agencies] //深拷贝一份，不改变原数组对象
@@ -68,6 +70,9 @@ class Vote extends Component {
               )
             }
           </ol>
+        </div>
+        <div className="vote-to-add">
+          没有所投中介？<Link to="/add">添加一个<Icon type="pullright" /></Link>
         </div>
       </div>
     )
